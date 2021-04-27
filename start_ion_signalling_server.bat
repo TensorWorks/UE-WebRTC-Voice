@@ -1,0 +1,1 @@
+cd ion-sfu-1.9.8 && go mod download && go build cmd/signal/json-rpc/main.go && main -c config.toml -a ":7000"

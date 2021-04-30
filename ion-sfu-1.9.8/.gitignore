@@ -13,3 +13,4 @@ bin
 *.generated.go
 .stignore
 okteto.yml
+*.exe

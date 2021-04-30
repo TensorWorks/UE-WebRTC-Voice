@@ -32,11 +32,18 @@ class Main {
         this.signal = new Signal.IonSFUJSONRPCSignal("ws://localhost:7000/ws");
         if(!this.signal)
         {
-            throw Error("Could not connect to signalling server for the SFU, aborting.");
+            throw new Error("Could not connect to signalling server for the SFU, aborting.");
         }
         this.client = new IonSDK.Client(this.signal, PeerConnectionConfig);
         this.client.ontrack = this.clientOnTrack.bind(this);
         this.signal.onopen = this.signallingServerOnOpen.bind(this); 
+    }
+
+    listenToAudioStream(stream)
+    {
+        var audio_elem = document.createElement("audio");
+        audio_elem.srcObject = stream;
+        audio_elem.play();
     }
 
     clientOnTrack(track, stream)
@@ -44,6 +51,8 @@ class Main {
         console.log("Client got 'ontrack' event fired.");
         console.log(track);
         console.log(stream);
+
+        this.listenToAudioStream(stream);
     }
 
     signallingServerOnOpen()
@@ -60,10 +69,13 @@ class Main {
 
         // Get a local audio stream
         const localStreamPromise = IonSDK.LocalStream.getUserMedia({
-            audio: true,
+            audio: { autoGainControl: false, channelCount: 2, echoCancellation: false, latency: 0, noiseSuppression: false, sampleRate: 48000, sampleSize: 16, volume: 1.0 },
             video: false,
             simulcast: true, 
         });
+
+        // Note: If we feel like we need higher quality audio we can try to munge the SDP to request higher average bitrate
+        // as seen here: https://stackoverflow.com/a/58898163/1166082
 
         // When we successfully get the stream we will send it to the SFU.
         localStreamPromise.then(this.onLocalStreamSuccess.bind(this), this.onLocalStreamFailed.bind(this));

@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{E8492FD0-4451-4F5D-8A95-48BE83E094E3}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "BidiGame",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

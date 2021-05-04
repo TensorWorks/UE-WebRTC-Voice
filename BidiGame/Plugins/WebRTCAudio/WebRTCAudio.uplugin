@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.0.1",
+	"FriendlyName": "WebRTCAudio",
+	"Description": "Receive audio from WebRTC in engine, expose it to UE's audio system and transmit it to WebRTC peers.",
+	"Category": "Other",
+	"CreatedBy": "TensorWorks",
+	"CreatedByURL": "https://tensorworks.com.au/",
+	"DocsURL": "https://github.com/TensorWorks/UE-WebRTC-Voice/",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/TensorWorks/UE-WebRTC-Voice/issues",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "WebRTCAudio",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

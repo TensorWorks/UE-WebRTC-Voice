@@ -3,6 +3,10 @@
 		{
 			"name": "BidiGame",
 			"path": "."
+		},
+		{
+			"name": "UE4",
+			"path": "C:\\Users\\DarthMaul\\Desktop\\UnrealEngine-M84"
 		}
 	],
 	"settings": {

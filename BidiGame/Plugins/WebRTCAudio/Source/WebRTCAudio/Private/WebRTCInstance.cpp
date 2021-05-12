@@ -8,17 +8,17 @@ FWebRTCInstance::FWebRTCInstance()
 {
     //ToDo: Create PeerConnectionFactory etc to start WebRTC in UE.
 
-    this->PeerConnectionFactory = webrtc::CreatePeerConnectionFactory(
-		nullptr, // network_thread
-		nullptr, // worker_thread
-		nullptr, // signal_thread
-		new rtc::RefCountedObject<FAudioCapturer>(), // audio device manager
-		webrtc::CreateAudioEncoderFactory<webrtc::AudioEncoderOpus>(),
-		webrtc::CreateAudioDecoderFactory<webrtc::AudioDecoderOpus>(),
-		nullptr, // video encoder factory
-		nullptr, //video decoder factory
-		nullptr, // audio_mixer
-		nullptr); // audio_processing
+    // this->PeerConnectionFactory = webrtc::CreatePeerConnectionFactory(
+	// 	nullptr, // network_thread
+	// 	nullptr, // worker_thread
+	// 	nullptr, // signal_thread
+	// 	new rtc::RefCountedObject<FAudioCapturer>(), // audio device manager //ToDo capture UE audio submix.
+	// 	webrtc::CreateAudioEncoderFactory<webrtc::AudioEncoderOpus>(),
+	// 	webrtc::CreateAudioDecoderFactory<webrtc::AudioDecoderOpus>(),
+	// 	nullptr, // video encoder factory
+	// 	nullptr, //video decoder factory
+	// 	nullptr, // audio_mixer
+	// 	nullptr); // audio_processing
 
 }
 

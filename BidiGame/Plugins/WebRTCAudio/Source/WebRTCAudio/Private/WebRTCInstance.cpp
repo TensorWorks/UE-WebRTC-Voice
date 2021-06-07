@@ -12,7 +12,7 @@ FWebRTCInstance::FWebRTCInstance()
 	// 	nullptr, // network_thread
 	// 	nullptr, // worker_thread
 	// 	nullptr, // signal_thread
-	// 	new rtc::RefCountedObject<FAudioCapturer>(), // audio device manager //ToDo capture UE audio submix.
+	// 	new rtc::RefCountedObject<FPixelStreamingAudioDeviceModule>(), // audio device manager //ToDo capture UE audio submix.
 	// 	webrtc::CreateAudioEncoderFactory<webrtc::AudioEncoderOpus>(),
 	// 	webrtc::CreateAudioDecoderFactory<webrtc::AudioDecoderOpus>(),
 	// 	nullptr, // video encoder factory

@@ -1,4 +1,9 @@
+.vs
 .vscode
+Content
+DerivedDataCache
 Intermediate
 Saved
+Script
+Plugins/WebRTCAudio/Content
 Plugins/WebRTCAudio/Intermediate

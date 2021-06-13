@@ -1,0 +1,76 @@
+USoundWaveProcedural - https://docs.unrealengine.com/en-US/API/Runtime/Engine/Sound/USoundWaveProcedural/index.html
+
+raw audio data can be fed in like so:
+
+InProceduralWave->QueueAudio(UncompressedDataQueue.GetData(), AvailableSamples * SampleSize);
+
+can use this delegate to generate data
+
+SoundStreaming->OnSoundWaveProceduralUnderflow = FOnSoundWaveProceduralUnderflow::CreateRaw(this, &FTestVoice::GenerateData);
+
+other options include OnGeneratePCMAudio
+
+Very complete example shown in: 
+https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Online/OnlineSubsystemUtils/Source/OnlineSubsystemUtils/Private/Tests/TestVoice.h
+
+https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Online/OnlineSubsystemUtils/Source/OnlineSubsystemUtils/Private/Tests/TestVoice.cpp
+
+
+
+
+
+
+
+
+------------------------------
+
+VoiceInterface used for online subsystem null: https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Online/OnlineSubsystemUtils/Source/OnlineSubsystemUtils/Public/VoiceInterfaceImpl.h
+
+UE in-built Voice chat (solid API)  - https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Online/VoiceChat/VoiceChat/Source/Public/VoiceChat.h
+has good delegates to feed audio in: https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Online/VoiceChat/VoiceChat/Source/Public/VoiceChat.h
+
+UE in-built voice interface for online subsystems - https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Online/OnlineSubsystem/Source/Public/Interfaces/VoiceInterface.h
+
+UE voice subsystem null - https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Plugins/Online/OnlineSubsystemNull/Source/Private/VoiceInterfaceNull.h
+
+
+-> Make an online subsystem null
+-> Enable voice chat in an .ini
+FOnlineVoiceInterfaceImpl will calll 
+VoiceEngine->GetVoiceDataReadyFlags
+VoiceEngine->ReadLocalVoiceData
+
+
+VoiceEngineImpl
+
+
+
+SubmitRemoteVoiceData
+
+
+VoiceCapture->GetVoiceData
+
+FVoiceModule::Get().CreateVoiceCapture("")
+
+
+Need to extend IVoiceCapture
+
+defaultengine.ini
+
+[OnlineSubsystem] 
+DefaultPlatformService=Null 
+bHasVoiceEnabled=true
+
+[Voice] 
+bEnabled=true
+
+defaultgame.ini:
+
+[/Script/Engine.GameSession]
+bRequiresPushToTalk=false
+
+
+todo:
+- https://couchlearn.com/multiplayer-sessions-in-your-unreal-engine-4-game/
+- https://couchlearn.com/the-easy-way-to-add-voice-chat-into-your-multiplayer-unreal-engine-4-game/
+- https://couchlearn.com/positional-voice-chat-using-blueprints-in-ue4/
